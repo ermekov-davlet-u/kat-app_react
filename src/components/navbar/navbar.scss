@@ -1,0 +1,91 @@
+$color: #133320;
+$menuLiBg: rgb(14, 124, 158);
+$menuLiBgHr: rgb(228, 226, 119);
+$blueBShadow: rgb(30, 143, 180);
+%disCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+
+.navbar{
+    width: calc(100vw - 18px);
+    height: 62px;
+    display: flex;
+    transition: all .4s ease-in;
+    justify-content: center;
+    @media screen and (max-width: 840px) {
+        height: 62px;
+    }
+}
+.navbar_container{
+    width: calc(100vw - 24px);
+    background-color: #fff;
+    box-shadow: 4px 2px 12px rgb(50, 110, 110);
+    display: flex;
+    align-items: center;
+    @extend %disCenter;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    @media screen and (max-width: 840px) {
+        align-items: flex-start;
+        justify-content: center;
+    }
+}
+.navbar_btn_wrap{
+    position: absolute;
+    left: 12px;
+    top: 18px;
+}
+.navbar_btn{
+    font-size: 24px;
+    color: $color;
+    display: none;
+    cursor: pointer;
+    @media screen and(max-width: 840px) {
+        display: block;
+    }
+}
+.menu{
+}
+.menu_ul{
+    display: flex;  
+    @media screen and (max-width: 840px) {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: repeat(5, 1fr);
+    }
+}
+.menu_li{
+    list-style: none;
+    margin: 12px;
+    padding: 7px 28px;
+    background-color: $menuLiBg;
+    border-radius: 4px;
+    box-shadow: 2px 3px 8px $blueBShadow;
+    border:1px solid rgb(84, 168, 194);
+    @extend %disCenter;
+    cursor: pointer;
+    &:hover{
+        background: $menuLiBgHr;
+        border:1px solid rgb(134, 136, 9);
+        box-shadow: 2px 3px 8px rgb(158, 156, 14);
+    }
+    &:first-child{
+        
+    }
+}
+.menu_link{
+    color: #fff;
+    text-decoration: none;
+}
+.show{
+    height: auto;
+}
+.close{
+    height: 62px;
+}
+
