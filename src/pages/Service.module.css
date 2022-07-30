@@ -1,0 +1,56 @@
+
+.main_wrap{
+    width: 100vw;
+    height: 90vh;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: bisque;
+    max-width: 1680px;
+    overflow: hidden;
+}
+
+.list{
+    max-height: 550px;
+    overflow: auto;
+    width: 660px;
+    overflow-x: hidden;
+}
+
+.search{
+    max-width: 700px;
+    margin: 68px auto;
+    background-color: #fff;
+}
+
+.search_inp{
+    width: 640px;
+    padding: 4px 18px;
+    color: #333;
+    outline: none;
+    border: none;
+    box-shadow: 2px 1px 4px rgb(76, 76, 141);
+}
+.list_item{
+    display: flex;
+    width: 100%;
+    padding: 4px 18px;
+    color: #333;
+    outline: none;
+    border: none;
+    box-shadow: 2px 1px 4px rgb(76, 76, 141);
+    cursor: pointer;
+    text-align: start;
+    overflow: hidden;
+}
+
+.fio{
+    width: 350px;
+}
+.faculty{
+    width: 108px;
+}
+.group{
+    width: 108px;
+}

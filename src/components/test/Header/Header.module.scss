@@ -1,0 +1,50 @@
+.header{
+    padding: 12px 0;
+    width: calc(100vw - 480px);
+}
+.container{
+    width: calc(100% - 48px) ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.left{
+    display: flex;
+}
+.search{
+display: flex;
+align-items: center;
+}
+.search_inp{
+    padding: 4px 18px;
+    font-size: 13px;
+    color: #82868C;
+}
+.right{
+    display: flex;
+    width: 220px;
+    justify-content: space-between;
+    align-items: center;
+}
+.right_text{
+    font-size: 14px;
+    line-height: 21px;
+    /* identical to box height, or 150% */
+    
+    text-align: center;
+    
+    /* Main company's color */
+    
+    color: #5A5A5A;
+}
+.header_btn{
+    background: #ADB4C2;
+    width: 52px;
+    height: 52px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.icon{
+    font-size: 18px;
+}

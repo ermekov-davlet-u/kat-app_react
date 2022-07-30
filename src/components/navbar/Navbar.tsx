@@ -25,6 +25,7 @@ function Navbar() {
                             <li className="menu_li"><Link className="menu_link" to={"/projects"} > Проекты компании </Link> </li>
                             <li className="menu_li"><Link className="menu_link" to={"/service"} > Услуги </Link> </li>
                             <li className="menu_li"><Link className="menu_link" to={"/foryou"} > Для вас </Link> </li>
+                            <li className="menu_li"><Link className="menu_link" to={"/websocket"} > Сокет </Link> </li>
                         </ul>
                     </nav>
                 </div>
