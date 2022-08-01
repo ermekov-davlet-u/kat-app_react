@@ -1,5 +1,5 @@
 .filter{
-    
+    width: calc(100% - 28px);
 }
 .title{
     font-weight: 600;
@@ -11,9 +11,10 @@ text-align: left;
     display: flex;
     padding-left: 18px;
     justify-content: space-between;
+    height: 88px;
+    align-items: center;
 }
 .btn{
-    
     border-radius: 8px;
     padding: 12px 32px;
     margin-left: 12px;
