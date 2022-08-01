@@ -120,3 +120,13 @@ table {
   display: none;
   width: 0px !important;
 }
+.full_width{
+  width: 100%;
+}
+button{
+  text-transform: uppercase;
+}
+.react-datepicker__input-container input{
+  background: none;
+  position: relative;
+}

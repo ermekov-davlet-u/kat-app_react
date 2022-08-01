@@ -3,18 +3,25 @@ import { BsDownload } from "react-icons/bs"
 import { BiX } from "react-icons/bi"
 
 
-function File() {
+function File({ name }: { name: string}) {
+
+    
+
     return ( 
         <div className={classes.file}>
             <div className={classes.file_left} >
                 <div className={classes.file_name}>
-                    Накладная_для_Умки (1).doc
+                    {
+                        name
+                    }
                 </div>
                 <div className={classes.file_date}>
                     от 24.10.2021
                 </div>
-                <div className={classes.file_order}>
+                <div className={classes.file_order_wrap}>
+                    <button className={classes.file_order}>
                     Заказ №4329
+                    </button>
                 </div>
             </div>
             <div className={classes.file_btns}>

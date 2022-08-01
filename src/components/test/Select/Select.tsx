@@ -18,12 +18,16 @@ function Selector({title, setValue, value}: SelectPropType) {
           backgroundColor: state.isSelected ? '#E3E6EB;' : 'white',
           padding: 20,
           maxWidth: 240,
+          fontSize: 14
+          
         }),
         control: () => ({
           width: 240,
           display: "flex",
           backgroundColor: "white",
-          marginTop: 0
+          marginTop: 0,
+          fontSize: 14,
+          cursor: "pointer",
         }),
         singleValue: (provided: any, state: any) => {
           const opacity = state.isDisabled ? 0.5 : 1;

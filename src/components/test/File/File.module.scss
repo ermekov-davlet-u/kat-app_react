@@ -16,24 +16,31 @@
     display: flex;
     align-items: center;
     padding: 0 24px ;
+    width: 480px;
+    justify-content: space-between;
 }
 .file_name{
     color: #000000;
-    margin-right: 40px;
+    flex-basis: 33%;
 }
 .file_date{
     color: #7C7C7C;
-    margin-right: 40px;
+    flex-basis: 33%;
 }
-.file_order{
-    background: #2A2E37;
-    border-radius: 2px;
-    padding: 6px 18px ;
-    margin-right: 40px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 14px;
-    cursor: pointer;
+.file_order_wrap{
+
+    .file_order{
+
+        background: #2A2E37;
+        border-radius: 2px;
+        padding: 6px 18px ;
+        color: #fff;
+        font-size: 10px;
+        line-height: 14px;
+        cursor: pointer;
+        flex-basis: 33%;
+        width: auto;
+    }
 }
 .file_btns{
     display: flex;

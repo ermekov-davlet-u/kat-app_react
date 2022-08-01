@@ -3,10 +3,11 @@
     width: calc(100% - 28px);
 }
 .container{
-    width: calc(100% - 28px);
+    width: calc(100% - 48px);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 0 auto;
 }
 .left{
     display: flex;
@@ -43,14 +44,12 @@
 }
 .header_btn{
     background: #ADB4C2;
-    width: 52px;
-    height: 52px;
+    width: 47px;
+    height: 47px;
     color: white;
     border-radius: 50%;
     cursor: pointer;
 }
 .icon{
     font-size: 18px;
-    color: #82868C;
-    transform: translateY(4px);
 }

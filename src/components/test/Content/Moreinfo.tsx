@@ -4,34 +4,13 @@ import InfoRow from './InfoRow';
 import File from './../File/File';
 import { BsFileEarmarkPlus } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
+import { CargoType, selectType } from "../../../store/models";
+import { observer } from 'mobx-react-lite';
+import { cargo } from './../../../store/cargo';
 
-interface selectType {
-    value: number | string
-    label: string
-}
 
-interface MoreInfoPropType {
-    id: number
-    status: selectType
-    date?: Date,
-    menadger?: string
-    sender?: string
-    typeContainer?: string
-    totalVolume?: string | number
-    height?: string | number
-    desc?: string
-    linkOrder?: string
-    delivery?: string
-    weight?: string | number
-    width?: string | number
-    tmc?: string
-    locationPort?: string
-    file?: number
-    length?: string | number
-    numberAct?: string
-    numberJD?: number
-    frahEdin?: string
-}
+
+
 
 function MoreInfo({
     id,
@@ -54,7 +33,9 @@ function MoreInfo({
     numberAct,
     numberJD,
     frahEdin,
-}: MoreInfoPropType) {
+}: CargoType) {
+
+    const [files, setFiles] = useState<any[]>([])
 
     const [ form ,setForm ] = useState<{status: selectType}>({
         status: {
@@ -75,7 +56,7 @@ function MoreInfo({
     return ( 
         <div className={"more"}>
             <div className="more_container">
-                <div className="more-elem">
+                <div className="more-elem full_width">
                     <p className="elem_title">
                         Статус
                     </p>
@@ -84,42 +65,44 @@ function MoreInfo({
                     </div>
                 </div>
                 <InfoRow title={"Дата поступления груза в порт"} content={date?.toLocaleDateString()} />
+                <InfoRow title={"Закрепленный заказ"} content={ <a>Заказ №4329</a> }/>
                 <InfoRow title={"Менеджер"} content={menadger}/>
-                <InfoRow title={"Менеджер"} content={sender}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
+                <InfoRow title={"Закрепленный заказ"} content={linkOrder}/>
+                <InfoRow title={"Доставка груза до порта отправления"} content={delivery}/>
+                <InfoRow title={"Грузоотправитель"} content={sender}/>
+                <InfoRow title={"Тип контейнера"} content={typeContainer}/>
+                <InfoRow title={"Масса, тн"} content={weight}/>
+                <InfoRow title={"Общий объем, м3"} content={totalVolume}/>
+                <InfoRow title={"Длина, метры"} content={length}/>
+                <InfoRow title={"Высота, метры"} content={height}/>
+                <InfoRow title={"Ширина, метры"} content={width}/>
                 <div className="disc">
                     <p className="disc_title"> 
                         Описание груза
                     </p>
                     <p className="disc_text">
-                    Следует отметить, что понимание сути ресурсосберегающих технологий обеспечивает 
-                    актуальность как самодостаточных, так и внешне зависимых концептуальных решений. 
-                    В своём стремлении улучшить пользовательский опыт мы упускаем, что активно развивающиеся 
-                    страны третьего мира неоднозначны и будут призваны к ответу. Внезапно, базовые сценарии 
-                    поведения пользователей набирают популярность среди определенных слоев населения, а значит, 
-                    должны быть описаны максимально подробно. Задача организации, в особенности же выбранный 
-                    нами инновационный путь, а также свежий взгляд на привычные вещи - безусловно открывает 
-                    новые горизонты для новых принципов формирования материально-технической и кадровой базы.
+                    {
+                        desc
+                    }
                     </p>
                 </div>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
-                <InfoRow title={"Менеджер"} content={"Иванов Иван Иванович"}/>
+                <InfoRow title={"ТМЦ"} content={tmc}/>
+                <InfoRow title={"Опора промежуточная"} content={frahEdin}/>
+                <InfoRow title={"Расположение груза в порту"} content={locationPort}/>
                 <div className="disc">
                     <p className="disc_title"> 
-                        Описание груза
+                        Файл транспортной накладной
                     </p>
-                    <p className="disc_text">
-                        <File />
+                    <p className="disc_text" style={{display: "flex", flexDirection: "column"}}>
+                        {
+                            files.map(item => {
+                                return (
+                                    <File name={ item.file.name } />
+                                )
+                            })
+                        }
                     </p>
                 </div>
-
                 <div className="disc">
                     <p className="disc_title"> 
                         Файл приемного акта
@@ -127,11 +110,17 @@ function MoreInfo({
                     <div className="disc_text">
                         <div className="btn_wrap">
                             <input type="file" onChange={(e:ChangeEvent<HTMLInputElement> ) => {
-                                console.log(e.target.files)
+                                const a = e.target?.files?.length? e.target?.files[0] : null
+                                if(a){
+                                    cargo.addFile(id, {
+                                        dataAdd: new Date(),
+                                        file: a
+                                    })
+                                }
                             }} className="file-upload" />
                             <button className="act_btn">
                                 <BsFileEarmarkPlus className="act_btn_icon" />
-                                Добавить
+                                    Добавить
                             </button>
                         </div>
                     </div>
@@ -143,7 +132,9 @@ function MoreInfo({
                             <BsFileEarmarkPlus className="act_btn_icon" />
                             Редактировать
                         </button>
-                        <button className="act_btn_red">
+                        <button className="act_btn_red" onClick={() => {
+                            console.log(cargo.cargo.find(c => c.id === id)?.file)
+                        }}>
                             Разделить груз
                         </button>
                     </div>
