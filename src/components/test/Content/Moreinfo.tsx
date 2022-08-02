@@ -4,7 +4,7 @@ import InfoRow from './InfoRow';
 import File from './../File/File';
 import { BsFileEarmarkPlus } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
-import { CargoType, selectType } from "../../../store/models";
+import { CargoFileType, CargoType, selectType } from "../../../store/models";
 import { observer } from 'mobx-react-lite';
 import { cargo } from './../../../store/cargo';
 
@@ -35,7 +35,7 @@ function MoreInfo({
     frahEdin,
 }: CargoType) {
 
-    const [files, setFiles] = useState<any[]>([])
+    const [files, setFiles] = useState<CargoFileType[]>([])
 
     const [ form ,setForm ] = useState<{status: selectType}>({
         status: {
@@ -52,6 +52,13 @@ function MoreInfo({
             status: status
         })
     }, [])
+
+    async function delFile(id: number){
+        const newArrFiles = await files.filter(item => {
+            return item.id == id
+        })
+        setFiles(newArrFiles)
+    }
 
     return ( 
         <div className={"more"}>
@@ -97,7 +104,7 @@ function MoreInfo({
                         {
                             files.map(item => {
                                 return (
-                                    <File name={ item.file.name } />
+                                    <File id={item.id} onDel={ delFile } name={ item.file.name } date = { item.dataAdd.toLocaleDateString() } />
                                 )
                             })
                         }
@@ -111,11 +118,17 @@ function MoreInfo({
                         <div className="btn_wrap">
                             <input type="file" onChange={(e:ChangeEvent<HTMLInputElement> ) => {
                                 const a = e.target?.files?.length? e.target?.files[0] : null
+                                console.log((Math.floor(Math.random() * 1000)));
+                                
                                 if(a){
-                                    cargo.addFile(id, {
-                                        dataAdd: new Date(),
-                                        file: a
-                                    })
+                                    setFiles( [
+                                        ...files, 
+                                        {
+                                            dataAdd: new Date(),
+                                            file: a,
+                                            id: (Math.floor(Math.random() * 100))
+                                        }
+                                    ])
                                 }
                             }} className="file-upload" />
                             <button className="act_btn">

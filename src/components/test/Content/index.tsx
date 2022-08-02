@@ -13,9 +13,11 @@ function Content() {
     const  [pages, setPages] = useState<{
         maxPages: number
         currentPage: number
+        count: number
     }>({
-        maxPages: 1,
+        maxPages: 2,
         currentPage: 1,
+        count: 2
     })
 
     return ( 
@@ -24,9 +26,15 @@ function Content() {
                     <ul className="responsive-table">
                         <li className="table-header">
                             <div className="col col-0">
-                                <input type="checkbox" onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                                    cargo.setDone(e.target.checked)
-                                }}/>
+                                <input type="checkbox" onChange={async(e: ChangeEvent<HTMLInputElement>) => {
+                            const cargos = await cargo.cargo.map(item => {
+                                item.done = !!e.target.checked
+                                return item
+                            })
+
+                            cargo.newCargos(cargos)
+
+                        }}/>
                             </div>
                             <div className="col col-1" >Номер груза</div>
                             <div className="col col-1">Тип</div>
@@ -41,9 +49,13 @@ function Content() {
                         </li>
                         {
                             cargo.cargo.map((item, i) => {
-                                return( 
+
+                                const startIndex = pages.currentPage * count
+                                
+                                if( i >= startIndex - count && i <= startIndex - 1 )return( 
                                     <ContentElem item={item} />
                                 )
+                                
                             })
                         }
                     </ul>
@@ -62,18 +74,35 @@ function Content() {
                             <button className="pages_btn">
                                 <IoIosArrowBack />
                             </button>
-                            <button className="pages_num">
-                                1
-                            </button>
-                            <button className="pages_num">
-                                2
-                            </button>
-                            <button className="pages_num">
-                                3
-                            </button>
-                            <button className="pages_num">
-                                4
-                            </button>
+                            {
+                                [1,2,3,4,5,6].map((item, i) => {
+                                    if(item == pages.currentPage){
+                                        return (
+                                            <button className="pages_num pages_num_active" onClick={ () => {
+                                                setPages(state => {
+                                                    return { ...state, currentPage: i }
+                                                })
+                                            } }>
+                                                {
+                                                    ++i
+                                                }
+                                            </button>
+                                        )
+                                    }
+                                    return (
+                                        <button className="pages_num" onClick={ () => {
+                                            setPages(state => {
+                                                return { ...state, currentPage: i }
+                                            })
+                                        } }>
+                                            {
+                                                ++i
+                                            }
+                                        </button>
+                                    )
+                                })
+                            }
+                            
                             <button className="pages_btn">
                                 <IoIosArrowForward />
                             </button>

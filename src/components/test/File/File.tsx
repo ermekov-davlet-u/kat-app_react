@@ -3,7 +3,7 @@ import { BsDownload } from "react-icons/bs"
 import { BiX } from "react-icons/bi"
 
 
-function File({ name }: { name: string}) {
+function File({id,  name, date, onDel}: { id: number, name: string, date: string, onDel: (id: number) => void}) {
 
     
 
@@ -16,7 +16,9 @@ function File({ name }: { name: string}) {
                     }
                 </div>
                 <div className={classes.file_date}>
-                    от 24.10.2021
+                    от {
+                        date
+                    }
                 </div>
                 <div className={classes.file_order_wrap}>
                     <button className={classes.file_order}>
@@ -29,7 +31,9 @@ function File({ name }: { name: string}) {
                     <BsDownload />
                 </button>
                 <button className={classes.file_btn}>
-                    <BiX />
+                    <BiX onClick={() => {
+                        onDel(id)
+                    }} />
                 </button>
             </div>
         </div>

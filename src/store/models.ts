@@ -20,7 +20,7 @@ export interface  CargoType {
     width?: string | number
     tmc?: string
     locationPort?: string
-    file?: number
+    file: CargoFileType[]
     length?: string | number
     numberAct?: string
     numberJD?: number
@@ -29,6 +29,7 @@ export interface  CargoType {
 }
 
 export type CargoFileType = {
+    id: number
     dataAdd: Date,
     file: File
 }

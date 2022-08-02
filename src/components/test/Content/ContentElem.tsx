@@ -33,9 +33,14 @@ function ContentElem( { item }: { item: CargoType } ) {
                     <div className="col col-0">
                         <input type="checkbox" onClick={(e) => {
                             e.stopPropagation()
-                        }} onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                            cargo.setDone(!!e.target.checked, item.id )
-                        }}/>
+                        }} checked={item.done} onChange={async(e: ChangeEvent<HTMLInputElement>) => {
+                            const a = await cargo.cargo.map( elem => {
+                                if( item.id == elem.id ) elem.done = !!e.target.checked
+                                return elem
+                            })
+                            
+                            cargo.newCargos(a)
+                        }} />
                     </div>
                     <div className="col col-1" data-label="Job Id"> {
                         item.id
