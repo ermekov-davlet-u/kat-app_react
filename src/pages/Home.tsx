@@ -2,12 +2,12 @@
 
 import React, { useState } from 'react';
 import { Button } from 'primereact/button';
-import Header from './../components/Header/index';
-import { ConfirmModal } from './../components/OverLay/index';
-import { MyConfirmPopup } from './../components/Dialog/index';
-import SliderPrime from './../components/Slider/index';
-import { SidebarPrime } from './../components/Sidebar';
-import ListPrime from './../components/List/index';
+import Header from '../components/Header/index';
+import { ConfirmModal } from '../components/OverLay/index';
+import { MyConfirmPopup } from '../components/Dialog/index';
+import SliderPrime from '../components/Slider/index';
+import { SidebarPrime } from '../components/Sidebar';
+import ListPrime from '../components/List/index';
 import { Image } from 'primereact/image';
 
 function Home() {
