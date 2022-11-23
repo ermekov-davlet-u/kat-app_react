@@ -7,6 +7,7 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import { observer } from 'mobx-react-lite';
 import { cargo } from './../../../store/cargo';
 
+
 function Content() {
 
     const [count, setCount] = useState<number>(20)
@@ -48,11 +49,10 @@ function Content() {
                             </div>
                         </li>
                         {
-                            cargo.cargo.map((item, i) => {
+                            cargo.cargo.slice((pages.currentPage * count) - count, (pages.currentPage * count)).map((item, i) => {
 
-                                const startIndex = pages.currentPage * count
                                 
-                                if( i >= startIndex - count && i <= startIndex - 1 )return( 
+                                return( 
                                     <ContentElem item={item} />
                                 )
                                 

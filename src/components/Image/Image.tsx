@@ -7,7 +7,6 @@ interface ImagePropType{
 function Image({ imgUrl }: ImagePropType) {
     return ( 
         <div className={image.wrap}>
-            
             <img src={"/img/" + imgUrl} alt="" className={image.img} />
             <div className={image.img_title}>Title image</div>
         </div>

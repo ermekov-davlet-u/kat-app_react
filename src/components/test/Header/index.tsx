@@ -11,7 +11,7 @@ function Header() {
                 <div className={classes.left}>
                     <div className={classes.search}>
                         <FiSearch className={classes.icon} />
-                        <input type="text" className={classes.search_inp} placeholder="Найти коносамент, груз, заказ и др...." />
+                        <input type="search" className={classes.search_inp} placeholder="Найти коносамент, груз, заказ и др...." />
                     </div>
                 </div>
                 <div className={classes.right}>

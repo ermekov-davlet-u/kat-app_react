@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  max-width: 1882px
+  min-height: 100vh;
+  max-width: 2082px;
+  background-color: rgb(255, 190, 190);
 }
 
 .App-logo {
@@ -36,4 +38,128 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.my_select__menu::-webkit-scrollbar-track {
+  width: 10px;
+}
+
+.my_select__menu::-webkit-scrollbar {
+  background-color: rgb(255, 0, 0);
+}
+* ::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color: rgb(163, 163, 163);
+  border-radius: 10px;
+  /* or add it to the track */
+}
+
+* ::-webkit-scrollbar-thumb {
+  background-color: #57617B;
+  border-radius: 5px;
+}
+
+.header{
+  padding: 12px;
+  margin-top: 48px;
+  background-color: #fff;
+  border-radius: 12px;
+}
+.header_container{
+  display: flex;
+}
+.header_inp{
+  border: 2px solid red
+}
+.header_split{
+  width: 100%;
+  margin-left: 12px;
+}
+.btn{
+  top: 48px;
+  right: 0;
+  opacity: .7;
+  background: grey;
+}
+
+.btn:hover{
+  opacity: 1;
+}
+.btn .p-button{
+  background-color: #57617B;
+}
+.new-block{
+  /* max-width: 480px; */
+  margin-top: 48px;
+}
+.confirm_btn{
+  background-color: #04a1cc !important;
+  color: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(4, 128, 185) !important;
+}
+
+.card .card_img{
+  width: 38px;
+  border-radius: 50%;
+  height: 38px;
+}
+.popup{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 8px
+}
+.main{
+  display: flex;
+  position: relative;
+  padding-right: 24px;
+}
+.main_content{
+  position: relative;
+  padding: 12px;
+  margin-left: 68px;
+  width: 100%;
+}
+.main_sidebar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  padding-top: 24px;
+  z-index: 150;
+  padding: 12px;
+}
+.confirm-dialog{
+  margin: 12px 0;
+}
+.confirm-dialog .p-button{
+  transition: .2s ease-in-out;
+}
+.cards_wrap{
+  display: flex;
+  flex-wrap: wrap;
+}
+.cards_wrap > div{
+  margin: 12px;
+}
+.vert{
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-gap: 8px 4px;
+}
+.primeImg{
+  width: 100%;
+  max-height: 680px;
+  object-fit: cover;
+}
+.mb-12{
+  margin-bottom: 12px !important;
+}
+.form_btns{
+  display: flex;
+}
+.form_btns > *{
+  margin: 0 12px !important;
 }

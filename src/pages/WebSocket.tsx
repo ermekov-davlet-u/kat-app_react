@@ -1,9 +1,11 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, ChangeEvent } from 'react';
 import classes from "./WebSocket.module.css"
 import { io } from "socket.io-client";
 import { ErrorCallback } from 'typescript';
 
 export const WebSocketDemo = () => {
+
+  const [messageText, setMessageText] = useState<string>("")
 
   const socket = io("http://localhost:5000/", {
     reconnectionDelayMax: 10000,
@@ -19,7 +21,7 @@ export const WebSocketDemo = () => {
 
   async function sendMessage(){
 
-    socket.emit("createKat", { a: "b", c: [] });
+    socket.emit("createKat", { a: "b", c: [], messageText});
 
     socket.on("message-kat", (type, data) => {
       console.log(type, data);
@@ -56,7 +58,9 @@ export const WebSocketDemo = () => {
             <p className={classes.content_text}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </p>
-            <input type="text" className={classes.content_inp} />
+            <input type="text" className={classes.content_inp} value={messageText} onInput={(e: ChangeEvent<HTMLInputElement>) => {
+              setMessageText(e.target.value)
+            }} />
             <button className={classes.btn} onClick={() => {
               sendMessage()
             }}>Отправить</button>

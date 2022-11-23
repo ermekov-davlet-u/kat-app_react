@@ -55,9 +55,20 @@ function MoreInfo({
 
     async function delFile(id: number){
         const newArrFiles = await files.filter(item => {
-            return item.id == id
+            return item.id !== id
         })
         setFiles(newArrFiles)
+    }
+
+    async function editCargo(){
+        const newCargos = await cargo.cargo.map( item => {
+            if(item.id === id){
+                item.file = files
+                item.status = form.status
+            }
+            return item
+        })
+        cargo.newCargos( newCargos )
     }
 
     return ( 
@@ -126,7 +137,7 @@ function MoreInfo({
                                         {
                                             dataAdd: new Date(),
                                             file: a,
-                                            id: (Math.floor(Math.random() * 100))
+                                            id: (Math.floor(Math.random() * 1000))
                                         }
                                     ])
                                 }
@@ -141,12 +152,11 @@ function MoreInfo({
                 <InfoRow title={"Номер приемного акта"} content={"21085-Т"}/>
                 <div className="disc">
                     <div className="disc_text">
-                        <button className="act_btn">
+                        <button className="act_btn" onClick={ editCargo } >
                             <BsFileEarmarkPlus className="act_btn_icon" />
                             Редактировать
                         </button>
                         <button className="act_btn_red" onClick={() => {
-                            console.log(cargo.cargo.find(c => c.id === id)?.file)
                         }}>
                             Разделить груз
                         </button>
