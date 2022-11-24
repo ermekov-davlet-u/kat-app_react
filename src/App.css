@@ -1,3 +1,5 @@
+@import '~dockview/dist/styles/dockview.css';
+
 .App {
   text-align: center;
   min-height: 100vh;
@@ -165,4 +167,8 @@
 }
 .form_btns > *{
   margin: 0 12px !important;
+}
+.docview{
+  width: 100vw;
+  height: 100vh;
 }

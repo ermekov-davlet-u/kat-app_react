@@ -14,9 +14,10 @@ function App() {
     <div className="App">
       <BrowserRouter >
         <Navbar />
-        <Routes>
+        <Routes>TablePrime
           <Route path='/' element={<Home />}/>
           <Route path='/projects' element={<Projects />}/>
+          <Route path='/main' element={<Main />}/>
         </Routes>
       </BrowserRouter>
     </div>

@@ -9,11 +9,6 @@
     box-shadow: 2px 4px 12px rgb(35, 50, 53);
     position: relative;
     border-radius: 4px;
-    &:hover .img_title{
-        background-color: rgba(0, 0, 0, .3);
-        cursor: pointer;
-        visibility: visible;
-    }    
 }
 .img_title{
     position: absolute;
@@ -37,9 +32,4 @@
     height: auto;
     box-shadow: 2px 4px 12px rgb(3, 89, 104);
     transition: .8s ease;
-    &:hover{
-        transform: scale(1.2,1.2);
-        cursor: pointer;
-    }
-    
 }

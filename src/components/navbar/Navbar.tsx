@@ -1,4 +1,4 @@
-import "./navbar.scss"
+import "./navbar.css"
 import React, { useState } from "react"
 import {FiMenu} from "react-icons/fi"
 import { Link } from "react-router-dom";
@@ -22,6 +22,7 @@ function Navbar() {
                         <ul className="menu_ul">
                             <li className="menu_li"><Link className="menu_link" to={"/"} > Главная </Link> </li>
                             <li className="menu_li"><Link className="menu_link" to={"/projects"} > Проекты компании </Link> </li>
+                            <li className="menu_li"><Link className="menu_link" to={"/main"} > Таблица </Link> </li>
                         </ul>
                     </nav>
                 </div>

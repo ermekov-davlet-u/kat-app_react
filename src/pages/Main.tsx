@@ -1,14 +1,14 @@
-import React from "react"
-import Image from './../components/Image/Image';
-import Gallery from './../components/galary/Gallery';
-import { ConfirmModal } from './../components/OverLay/index';
+
+import Component  from "../components/Docview";
+import TablePrime from "../components/TablePrime";
 
 
 
 function Main() {
     return ( 
         <>
-            <Gallery />
+            <Component />   
+            <TablePrime />
         </>
      );
 }

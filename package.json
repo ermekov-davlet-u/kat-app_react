@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@cyntler/react-doc-viewer": "^1.10.1",
+    "@fortune-sheet/react": "0.5.6",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,15 +14,19 @@
     "@types/react-dom": "^18.0.6",
     "classnames": "^2.3.1",
     "date-fns": "^2.29.1",
+    "dockview": "^1.5.2",
+    "docview": "^1.1.0",
+    "fortune": "^5.5.18",
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
-    "node-sass": "^7.0.1",
+    "node-sass": "^6.0.1",
     "polished": "^4.2.2",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.2",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
     "react-day-picker": "^8.0.7",
+    "react-doc-viewer": "^0.1.5",
     "react-dom": "^18.2.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.4.0",
@@ -62,7 +68,6 @@
   "devDependencies": {
     "@types/react-datepicker": "^4.4.2",
     "@types/styled-components": "^5.1.25",
-    "@types/uuid": "^8.3.4",
-    "sass": "^1.53.0"
+    "@types/uuid": "^8.3.4"
   }
 }
